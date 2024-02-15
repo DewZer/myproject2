@@ -6,3 +6,5 @@ npm test // เอาไว้เทสงาน
 git add . // add file นี้ รอไว้เพื่อ commit (ยังไม่ได้ส่ง)
 git commit -am "(ตั้งชื่อ)" // -a มันจะ ad dให้อีกรอบเผื่อลืม add -m modifine commitทุกfile ที่มีการแก้ไข !!สำคัญ!!
 git push -u origin main // เอาไฟล์เราขึ้น git hub
+--
+https://bony-unicorn-cb8.notion.site/JS-WK-3-48de253ed4f74dea8c8226fb6237f5f3

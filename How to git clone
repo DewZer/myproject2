@@ -7,4 +7,310 @@ git add . // add file นี้ รอไว้เพื่อ commit (ยัง
 git commit -am "(ตั้งชื่อ)" // -a มันจะ ad dให้อีกรอบเผื่อลืม add -m modifine commitทุกfile ที่มีการแก้ไข !!สำคัญ!!
 git push -u origin main // เอาไฟล์เราขึ้น git hub
 --
-https://bony-unicorn-cb8.notion.site/JS-WK-3-48de253ed4f74dea8c8226fb6237f5f3
+//* 1.
+
+/* Instruction:
+- Adding task When the user enters text into the input field and clicks the button, add the
+text as a new item in the list <ul id="todoList"></ul>.
+1. init() :: Add an event listener to the "addButton" button to call the "addTask" function
+when clicked.
+2. addTask() ::
+2.1 Create a <li> tag and set its textContent to the value from the <input type="text"
+ id="todoInput" placeholder="Enter a new task"> field.
+2.2 Add a <li> tag to the <ul id="todoList"></ul>
+2.3 After adding the item, clear the <input type="text" id="todoInput"
+ placeholder="Enter a new task"> field to prepare for the next task
+ */
+
+
+
+//input.addEventListener('keyup', (e) => {
+//    console.log(e.key);
+//})
+
+function init() {
+    const btn = document.getElementById('addButton')
+    btn.addEventListener('click', addTask)
+}
+function addTask() {
+		const input = document.getElementById('todoInput')
+    const ul = document.getElementById('todoList')
+    const li = document.createElement('li')
+    li.textContent = input.value
+    ul.appendChild(li)
+    input = ''
+}
+init()
+--
+//* 2.
+
+const input = document.querySelector('.todoInput')
+input.addEventListener('keyup', (e) => {
+    console.log(e.key);
+})
+
+function init() {
+    const btn = document.querySelector('.addButton')
+    btn.addEventListener('click', addTask)
+}
+
+function addTask() {
+    const ul = document.getElementById('todoList')
+    const li = document.createElement('li')
+    li.textContent = input.value
+    ul.appendChild(li)
+    input.value = ''
+}
+init();
+--
+สามารถใช้ getElementByClassname และ getElementBy Tagname ได้ แต่ต้องระบุ Index ด้วย  แบบนี้
+const list = document.getElementsByTagName("ul")[0];
+--
+//* 3
+const ul = document.createElement('ul')
+ul.setAttribute('id', 'todoList')
+
+const input = document.createElement('input')
+input.setAttribute('type', 'text')
+input.setAttribute('placeholder', 'Enter a new task')
+input.addEventListener('keyup', ((e) => {
+    console.log(e.key);
+}))
+
+
+function init() {
+    const fDiv = document.querySelector('div')
+
+    const btn = document.createElement('button')
+    btn.textContent = 'Add'
+    btn.addEventListener('click', addTask)
+
+    fDiv.appendChild(input)
+    fDiv.appendChild(btn)
+
+    const sDiv = document.querySelector('div+div')
+    sDiv.appendChild(ul)
+}
+function addTask() {
+    const li = document.createElement('li')
+    li.textContent = input.value
+    ul.appendChild(li)
+		input.value = ''
+}
+init()
+--
+//* 4
+const ul = document.createElement('ul')
+ul.setAttribute('id', 'todoList')
+
+const input = document.createElement('input')
+input.setAttribute('type', 'text')
+input.setAttribute('placeholder', 'Enter a new task')
+input.addEventListener('keyup', ((e) => {
+    console.log(e.key);
+}))
+
+
+function init() {
+    const fDiv = document.querySelector('div')
+
+    const btn = document.createElement('button')
+    btn.textContent = 'Add'
+    btn.addEventListener('click', addTask)
+
+    fDiv.appendChild(input)
+    fDiv.appendChild(btn)
+
+    const sDiv = document.querySelector('div+div')
+    sDiv.appendChild(ul)
+}
+function addTask() {
+    const li = document.createElement('li')
+    li.textContent = input.value
+    ul.appendChild(li)
+		input.value = ''
+}
+init()
+--
+// 5.
+function init() {
+    const head = document.querySelector('head')
+    const title = document.createElement('title')
+    title.textContent = 'Registration Form'
+    head.append(title)
+
+    // -------------------------------- //
+
+    const body = document.querySelector('body')
+    const h2 = document.createElement('h2')
+    const div1 = document.createElement('div')
+    const label1 = document.createElement('label')
+    const input1 = document.createElement('input')
+
+    h2.textContent = 'Register'
+    label1.setAttribute('for', 'name')
+    label1.textContent = 'Full Name'
+    input1.setAttribute('type', 'text')
+    input1.setAttribute('id', 'name')
+    input1.setAttribute('name', 'name')
+    input1.setAttribute('required', '')
+
+    body.appendChild(h2)
+    body.appendChild(div1)
+    div1.appendChild(label1)
+    div1.appendChild(input1)
+
+    // -------------------------------- //
+
+    const div2 = document.createElement('div')
+    const label2 = document.createElement('label')
+    const input2 = document.createElement('input')
+
+    label2.setAttribute('for', 'email')
+    label2.textContent = 'Email Address'
+    input2.setAttribute('type', 'email')
+    input2.setAttribute('id', 'email')
+    input2.setAttribute('name', 'email')
+    input2.setAttribute('required', '')
+
+    body.appendChild(div2)
+    body.appendChild(div2)
+    div2.appendChild(label2)
+    div2.appendChild(input2)
+
+    // ------------------------------- //
+
+    const div3 = document.createElement('div')
+    const btn = document.createElement('button')
+    btn.setAttribute('type', 'submit')
+    btn.textContent = 'Register'
+
+    body.appendChild(div3)
+    div3.appendChild(btn)
+
+    btn.addEventListener('click', showUserRegister)
+
+    // ------------------------------ //
+
+    const div4 = document.createElement('div')
+    body.appendChild(div4)
+
+}
+function showUserRegister() {
+    //1. Create a <p> tag and add a <p> tag to last a <div> tag.
+    //2. Set a <p> tag textContent: name and email from an <input> tag
+    const allDiv = document.querySelectorAll('div')
+    const lastestDiv = allDiv[allDiv.length - 1]
+    const p = document.createElement('p')
+    lastestDiv.appendChild(p)
+
+    const input1 = document.getElementById('name')
+    const input2 = document.getElementById('email')
+    p.textContent = `${input1.value} ${input2.value}`
+		input1.value = ''
+    input2.value = ''
+}
+init()
+--
+# **LAB Exam: Instruction**
+
+- **Write your student id, firstname, and lastname in a single line comment before starting your program, 
+students who do not put this comment will get 50% taken off their score.***
+
+# **test-member-form**
+1. Member data prepared in ./data/members.js with two functions: { getMembers, findMember }
+2. A function called *memberForm()* works when a user clicks a member button, a member search panel will show. 
+After the user enters a searching member id, if found then the member detail will display, otherwise, no data shows. 
+Write three nested functions in the following:
+    - Nested Functions:
+        - **addEventHandler()** adds *memberHandler()* function to a member button and *searchHandler()* function to a search button with event 'click'.
+        - **memberHandler()** when a user clicks a member button, in case there are previous searching results, you must clear all previous content firstly. 
+          Then you must create and display a member id's search panel within `<div id="searchMember"></div>`. 
+          The search panel consists of the following element structure:
+   <p>Your Member Id:</p>
+   <input id="memberId">
+   <button>search</button>
+You must add *searchHandler* function to a search button
+
+- **searchHandler()** when a user clicks a search button, in case there are previous searching results, you must clear all previous content firstly. 
+Then you must call *findMember()* function (imported from members.js ) and then create and display the member object returned from the function within 
+`<div id="foundMember"></div>`. For example, if searching with 1003, it will result in the following element structure:
+   <p>id: 1003</p>
+   <p>firstname: Zaida</p>
+   <p>lastname: Daniels</p>
+   <p>email: ZaidaDaniels@dayrep.com</p>
+   <p>address: 1367 Clarksburg Park Road Sedona, AZ 86336</p>
+Ps.ไม่ได้ทำส่วนนี้
+Note that there is one white space after comma (:).
+// const { template } = require('@babel/core')
+// const memberManagement = require('./data/members.js')
+// const { getMembers, findMember } = memberManagement()
+
+import { memberManagement } from './data/members.js'
+const { getMembers, findMember } = memberManagement()
+
+//65130500070 Wanassanan Tri-apibanwongsa
+
+function memberForm() {
+
+  const addEventHandler = () => {
+    const memberBtn = document.getElementById('member')
+    memberBtn.addEventListener('click', memberHandler)
+  }
+
+  const memberHandler = () => {
+
+    const p0 = document.createElement('p')
+    const input = document.createElement('input')
+    const btn = document.createElement('button')
+    const searchMember = document.getElementById('searchMember')
+    btn.addEventListener('click', searchHandler)
+
+    searchMember.textContent = ''
+    p0.textContent = 'Your Member Id:'
+    input.setAttribute('id', 'memberId')
+    btn.textContent = 'search'
+
+    searchMember.appendChild(p0)
+    searchMember.appendChild(input)
+    searchMember.appendChild(btn)
+
+
+  }
+
+  const searchHandler = () => {
+
+    const memberId = document.getElementById('memberId').value
+
+    const p1 = document.createElement('p')
+    const p2 = document.createElement('p')
+    const p3 = document.createElement('p')
+    const p4 = document.createElement('p')
+    const p5 = document.createElement('p')
+    const foundMember = document.getElementById('foundMember')
+
+    foundMember.textContent = ''
+
+    const member = findMember(parseInt(memberId))
+
+    p1.textContent = `id:${member.id}`
+    p2.textContent = `firstname:${member.firstname}`
+    p3.textContent = `lastname:${member.lastname}`
+    p4.textContent = `email:${member.email}`
+    p5.textContent = `address:${member.address}`
+
+    foundMember.appendChild(p1)
+    foundMember.appendChild(p2)
+    foundMember.appendChild(p3)
+    foundMember.appendChild(p4)
+    foundMember.appendChild(p5)
+
+  }
+
+  return {
+    addEventHandler
+  }
+}
+// module.exports = memberForm
+const { addEventHandler } = memberForm()
+addEventHandler()
